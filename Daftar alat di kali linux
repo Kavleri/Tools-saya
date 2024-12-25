@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Fungsi untuk menampilkan menu utama
+function show_menu() {
+    clear
+    echo "============================================"
+    echo "         Daftar Alat di Kali Linux"
+    echo "============================================"
+    echo "1. Network Mapping & Discovery"
+    echo "2. Vulnerability Scanners"
+    echo "3. Exploitation Tools"
+    echo "4. Wireless Testing Tools"
+    echo "5. Password Cracking Tools"
+    echo "6. Web Application Testing Tools"
+    echo "7. Social Engineering Tools"
+    echo "8. Forensics Tools"
+    echo "9. Keluar"
+    echo "============================================"
+    echo -n "Pilih kategori [1-9]: "
+}
+
+# Fungsi untuk menampilkan alat berdasarkan kategori
+function show_tools() {
+    case $1 in
+        1)
+            echo "Network Mapping & Discovery:"
+            echo "1. Nmap: nmap [target]"
+            echo "2. Netcat (nc): nc -v -n [IP] [port]"
+            echo "3. Fping: fping -a -g [range]"
+            ;;
+        2)
+            echo "Vulnerability Scanners:"
+            echo "1. Nikto: nikto -h [URL]"
+            echo "2. OpenVAS: openvas-start"
+            echo "3. Wapiti: wapiti -u [URL]"
+            ;;
+        3)
+            echo "Exploitation Tools:"
+            echo "1. Metasploit Framework: msfconsole"
+            echo "2. BeEF: beef-xss"
+            echo "3. ExploitDB: searchsploit [keyword]"
+            ;;
+        4)
+            echo "Wireless Testing Tools:"
+            echo "1. Aircrack-ng: aircrack-ng [file.cap]"
+            echo "2. Wifite: wifite"
+            echo "3. Fern Wifi Cracker: fern-wifi-cracker"
+            ;;
+        5)
+            echo "Password Cracking Tools:"
+            echo "1. John the Ripper: john [file_hash]"
+            echo "2. Hashcat: hashcat -m [mode] -a [attack_mode] [hashfile] [wordlist]"
+            echo "3. Hydra: hydra -l [username] -P [wordlist] [target] [service]"
+            ;;
+        6)
+            echo "Web Application Testing Tools:"
+            echo "1. Burp Suite: burpsuite"
+            echo "2. OWASP ZAP: zaproxy"
+            echo "3. SQLmap: sqlmap -u [URL] --dbs"
+            ;;
+        7)
+            echo "Social Engineering Tools:"
+            echo "1. Social Engineering Toolkit (SET): setoolkit"
+            echo "2. PhishX: phishx"
+            ;;
+        8)
+            echo "Forensics Tools:"
+            echo "1. Autopsy: autopsy"
+            echo "2. Binwalk: binwalk [file]"
+            echo "3. Volatility Framework: volatility -f [memory_dump] [command]"
+            ;;
+        9)
+            echo "Terima kasih telah menggunakan program ini. Sampai jumpa!"
+            exit 0
+            ;;
+        *)
+            echo "Opsi tidak valid. Silakan pilih opsi dari menu."
+            ;;
+    esac
+}
+
+# Loop utama
+while true; do
+    show_menu
+    read choice
+    clear
+    show_tools $choice
+    echo ""
+    echo "Tekan Enter untuk kembali ke menu utama..."
+    read
+done
